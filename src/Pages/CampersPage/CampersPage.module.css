@@ -1,0 +1,15 @@
+.campers_page {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start; /* Aligns items at the start of the container */
+}
+.wrap_q {
+  width: 360px !important; /* Але не перевищує 360 пікселів */
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap_c {
+  width: 888px;
+  /* height: 1568px; */
+}

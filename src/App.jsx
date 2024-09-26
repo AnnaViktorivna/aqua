@@ -1,7 +1,7 @@
-import { NavLink, Route, Routes } from "react-router-dom"
+import {  Route, Routes } from "react-router-dom"
 import { Header } from "./components/Header/Header"
 import { HomePage } from "./Pages/HomePage/HomePage"
-import { Campers } from "./Pages/Campers/Campers"
+import { CampersPage } from "./Pages/CampersPage/CampersPage"
 
 
 function App() {
@@ -9,18 +9,9 @@ function App() {
   return (
     <>
     <Header />
- 
-  {/* <nav>
-        <NavLink to="/" >
-          Home
-        </NavLink>
-        <NavLink to="/campers" >
-          Campers
-        </NavLink>
-      </nav> */}
   <Routes>
         <Route path="/" element={< HomePage/>} />
-        <Route path="/catalog" element={<Campers />} />
+        <Route path="/catalog" element={<CampersPage />} />
       </Routes>
     </>
   )
