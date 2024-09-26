@@ -1,0 +1,23 @@
+/* font: 400 16px / 150% var(--font-family);
+color: var(--gray); */
+.location {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 360px;
+}
+.title {
+  font-weight: 400px;
+  font-size: 16px;
+  line-height: 150%;
+  font-family: "Inter", sans-serif;
+  color: #475467;
+}
+
+.input {
+  border-radius: 12px;
+  border: none;
+  width: 360px;
+  height: 56px;
+  background-color: #f7f7f7;
+}

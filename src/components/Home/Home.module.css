@@ -1,35 +1,43 @@
+.container {
+  width: 100%; /* Make the container responsive */
+  max-width: 1440px; /* Set a maximum width for larger screens */
+  height: 696px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../../assets/Picture.png");
+  background-size: cover; /* Ensure the image covers the entire area */
+  background-position: center; /* Center the image */
+  position: relative; /* Set position for absolute children if needed */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .wrap {
-    width: 1440px;
-    height: 696px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../../assets/Picture.png");
-    background-size: cover; /* Ensure the image covers the entire area */
-    background-position: center; /* Center the image */
-    /* background-attachment: fixed;  */
+  width: 571px;
+  height: 176px;
+  padding-left: 5%;
 }
 
-.title{
-
-    font-weight: 600px;
-    font-size:  48px;
-    letter-spacing:  -0.02em;
-    color: #f7f7f7;
+.title {
+  font-weight: 600px;
+  font-size: 48px;
+  letter-spacing: -0.02em;
+  color: #f7f7f7;
 }
 
-.subtitle{
-    font-size: 24px;
-    color: #f7f7f7;
+.subtitle {
+  font-size: 24px;
+  color: #f7f7f7;
 }
 
-.button{
-    
-    border-radius: 200px;
-    width: 173px;
-    height: 56px;
-    background-color: #e44848;
-    
-    
-    color: #f7f7f7;
-    font-weight: 500px;
-    font-size:  16px ;
-    letter-spacing: -0.01em;
+.button {
+  border-radius: 200px;
+  width: 173px;
+  height: 56px;
+  background-color: #e44848;
+
+  color: #f7f7f7;
+  font-weight: 500px;
+  font-size: 16px;
+  letter-spacing: -0.01em;
 }

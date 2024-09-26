@@ -1,18 +1,23 @@
-import React from 'react'
+import React from "react";
+import css from "./Filters.module.css";
 
 export const Filters = () => {
   return (
     <div>
-    <div>
-        <h2>Vehicle equipment  </h2>
-        <ul><li>Automatic</li></ul>
-            
+      <p className={css.title}>Filters</p>
+      <div>
+        <h2 className={css.title}>Vehicle equipment </h2>
+        <ul>
+          <li>Automatic</li>
+        </ul>
+      </div>
+      <div>
+        <h2 className={css.title}>Vehicle type </h2>
+        <ul>
+          <li>Automatic</li>
+        </ul>
+      </div>
+      <button className={css.button}>Search</button>
     </div>
-    <div>
-        <h2>Vehicle type  </h2>
-        <ul><li>Automatic</li></ul>
-        </div>
-        <button>Search</button>
-    </div>
-  )
-}
+  );
+};

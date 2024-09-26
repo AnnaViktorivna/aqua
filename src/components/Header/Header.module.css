@@ -1,8 +1,38 @@
-.header{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: row;
-    gap: 25px;
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 25px;
+
+  border-bottom: 1px solid var(--badges);
+  padding: 24px 64px;
+  width: 1440px;
+  height: 72px;
+  background-color: #f7f7f7;
+}
+
+.title {
+}
+
+.links {
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  line-height: 150%;
+  color: #475467;
+  line-height: normal;
+}
+
+.links a {
+  color: #475467; /* Link color */
+  text-decoration: none; /* Remove underline */
+  padding: 8px 16px; /* Add some padding around links */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.links a:hover {
+  color: #1d4ed8; /* Change color on hover */
+  text-decoration: underline; /* Optional: underline on hover */
 }
