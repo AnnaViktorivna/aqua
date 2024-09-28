@@ -57,11 +57,20 @@ const catalogs = createSlice({
   name: "catalogs",
   initialState: {
     items: [],
-    camperId: null,
+    currentCamper: null,
+    searchResults: [],
+    locationQuery: "",
     isLoading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setSearchQuery(state, action) {
+      state.locationQuery = action.payload;
+    },
+    setSearchResults(state, action) {
+      state.searchResults = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCatalogs.fulfilled, (state, action) => {
@@ -80,12 +89,10 @@ const catalogs = createSlice({
         console.log(action);
       })
       .addCase(fetchCampersItemById.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.camperId = action.payload;
-        console.log(action);
+        state.currentCamper = action.payload;
       });
   },
 });
 
+export const { setSearchQuery, setSearchResults } = catalogs.actions;
 export const catalogsReducer = catalogs.reducer;

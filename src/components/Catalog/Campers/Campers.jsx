@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchCatalogs } from "../../redux/catalogs/operations";
 import {
-  fetchCampersItemById,
-  fetchCatalogs,
-} from "../../redux/catalogs/operations";
-import { selectCamperById, selectItems } from "../../redux/catalogs/selectors";
+  selectItems,
+  selectSearchResults,
+} from "../../redux/catalogs/selectors";
 import css from "./Campers.module.css";
 import { CiHeart } from "react-icons/ci";
 
@@ -17,17 +17,19 @@ const Campers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const items = useSelector(selectItems);
+  const search = useSelector(selectSearchResults);
 
-  const camperId = useSelector(selectCamperById);
+  // const camperId = useSelector(selectCamperById);
 
   useEffect(() => {
     dispatch(fetchCatalogs());
-  }, [dispatch, camperId]);
+  }, [dispatch]);
 
-  // const onCamperClick = (id) => {
-  //   dispatch(fetchCampersItemById(camperId));
-  //   navigate(`/catalog/${camperId}`);
-  // };
+  // const filteredData = useMemo(() => {
+  //   return items.filter(
+  //     (item) => item.name.toLowerCase().includes(search.toLowerCase()) // Use item.name for filtering
+  //   );
+  // }, [items, search]);
 
   return (
     <div className={css.list_wrapper_container}>
@@ -167,8 +169,8 @@ const Campers = () => {
                 <button
                   className={css.button}
                   onClick={() => {
-                    dispatch(fetchCampersItemById(item.id));
-                    navigate(`/catalog/${item.id}`);
+                    // dispatch(fetchCampersItemById(item.id));
+                    navigate(`${item.id}`);
                   }}
                 >
                   Show more

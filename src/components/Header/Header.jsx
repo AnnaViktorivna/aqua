@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { Navigation } from "../Navigation/Navigation";
 
 export const Header = () => {
   return (
@@ -61,9 +61,7 @@ export const Header = () => {
         </svg>
       </div>
       <div className={css.links}>
-        {" "}
-        <Link to='/'>Home</Link>
-        <Link to='/catalog'>Catalogs</Link>
+        <Navigation />
       </div>
     </div>
   );

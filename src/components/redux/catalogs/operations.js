@@ -19,14 +19,16 @@ export const fetchCatalogs = createAsyncThunk(
 // /campers/:id
 
 export const fetchCampersItemById = createAsyncThunk(
-  "catalogs/id",
+  "catalogs/fetchById",
   async (id, thunkAPI) => {
     try {
-      const response = await axios.get(`/campers/${id}`, id);
+      const response = await axios.get(`/campers/${id}`);
 
-      const camper = response.data.items.find((item) => item.id === id);
-      console.log(camper);
-      return camper;
+      return {
+        ...response.data,
+        // Avoid including non-serializable parts like `headers`
+        // headers: response.headers,  // Do not include headers
+      };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
