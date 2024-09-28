@@ -1,21 +1,33 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCatalogs } from "../../redux/catalogs/operations";
-import { selectItems } from "../../redux/catalogs/selectors";
+import {
+  fetchCampersItemById,
+  fetchCatalogs,
+} from "../../redux/catalogs/operations";
+import { selectCamperById, selectItems } from "../../redux/catalogs/selectors";
 import css from "./Campers.module.css";
 import { CiHeart } from "react-icons/ci";
 
 import { IoMdStar } from "react-icons/io";
 
 import { GrMapLocation } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 
 const Campers = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const items = useSelector(selectItems);
+
+  const camperId = useSelector(selectCamperById);
 
   useEffect(() => {
     dispatch(fetchCatalogs());
-  }, [dispatch]);
+  }, [dispatch, camperId]);
+
+  // const onCamperClick = (id) => {
+  //   dispatch(fetchCampersItemById(camperId));
+  //   navigate(`/catalog/${camperId}`);
+  // };
 
   return (
     <div className={css.list_wrapper_container}>
@@ -152,7 +164,15 @@ const Campers = () => {
 
               <div className={css.wrap_button}>
                 {" "}
-                <button className={css.button}>Show more</button>
+                <button
+                  className={css.button}
+                  onClick={() => {
+                    dispatch(fetchCampersItemById(item.id));
+                    navigate(`/catalog/${item.id}`);
+                  }}
+                >
+                  Show more
+                </button>
               </div>
             </div>
           </li>

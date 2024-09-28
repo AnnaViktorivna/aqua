@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCatalogs } from "./operations";
+import { fetchCampersItemById, fetchCatalogs } from "./operations";
 
 // {
 //     "id": "1",
@@ -53,37 +53,39 @@ import { fetchCatalogs } from "./operations";
 //     ]
 //   },
 
-
-
-
 const catalogs = createSlice({
-    name: 'catalogs',
-    initialState: { 
-        items: [],
-        isLoading: false,
-        error: null
-    },
-    reducers: {
-
-    },
-    extraReducers: (builder) => {
-  
-    builder.addCase(fetchCatalogs.fulfilled, (state, action) => {
+  name: "catalogs",
+  initialState: {
+    items: [],
+    camperId: null,
+    isLoading: false,
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCatalogs.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload.items;
-        console.log(action)
-    })
-    .addCase(fetchCatalogs.rejected, (state, action) => {
+        console.log(action);
+      })
+      .addCase(fetchCatalogs.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-        console.log(action)
-    })
-    .addCase(fetchCatalogs.pending, (state, action) => {
+        console.log(action);
+      })
+      .addCase(fetchCatalogs.pending, (state, action) => {
         state.isLoading = true;
-        console.log(action)
-    })
-    },
-  })
+        console.log(action);
+      })
+      .addCase(fetchCampersItemById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.camperId = action.payload;
+        console.log(action);
+      });
+  },
+});
 
-  export const catalogsReducer = catalogs.reducer;
+export const catalogsReducer = catalogs.reducer;
