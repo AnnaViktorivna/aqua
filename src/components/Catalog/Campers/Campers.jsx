@@ -1,10 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCatalogs } from "../../redux/catalogs/operations";
-import {
-  selectItems,
-  selectSearchResults,
-} from "../../redux/catalogs/selectors";
 import css from "./Campers.module.css";
 import { CiHeart } from "react-icons/ci";
 
@@ -12,29 +8,22 @@ import { IoMdStar } from "react-icons/io";
 
 import { GrMapLocation } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
+import { selectVisibleCampers } from "../../redux/filter/filterSlice";
 
 const Campers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const items = useSelector(selectItems);
-  const search = useSelector(selectSearchResults);
 
-  // const camperId = useSelector(selectCamperById);
+  const filtersCampers = useSelector(selectVisibleCampers);
 
   useEffect(() => {
     dispatch(fetchCatalogs());
   }, [dispatch]);
 
-  // const filteredData = useMemo(() => {
-  //   return items.filter(
-  //     (item) => item.name.toLowerCase().includes(search.toLowerCase()) // Use item.name for filtering
-  //   );
-  // }, [items, search]);
-
   return (
     <div className={css.list_wrapper_container}>
       <ul className={css.list}>
-        {items.map((item) => (
+        {filtersCampers.map((item) => (
           <li key={item.id} className={css.item}>
             <div className={css.wrap_img}>
               {" "}
@@ -169,7 +158,6 @@ const Campers = () => {
                 <button
                   className={css.button}
                   onClick={() => {
-                    // dispatch(fetchCampersItemById(item.id));
                     navigate(`${item.id}`);
                   }}
                 >

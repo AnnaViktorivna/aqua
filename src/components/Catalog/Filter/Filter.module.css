@@ -1,0 +1,115 @@
+/* font: 400 16px / 150% var(--font-family);
+color: var(--gray); */
+
+.wrap_filter {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.location {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 360px;
+  position: relative;
+}
+
+.l_icon {
+  fill: #475467;
+  position: absolute; /* Use absolute positioning */
+  top: 53%; /* Center vertically relative to the input */
+  left: 10px; /* Position it 20px from the right */
+  transform: translateY(-50%); /* Adjust for exact vertical centering */
+  width: 24px; /* Set width */
+  height: 24px; /* Set height */
+  pointer-events: none; /* Prevent clicks on the icon from interfering with input */
+}
+.title {
+  font-weight: 400px;
+  font-size: 16px;
+  line-height: 150%;
+  font-family: "Inter", sans-serif;
+  color: #475467;
+}
+
+.input {
+  border-radius: 12px;
+  padding-left: 29px;
+  border: none;
+  width: 360px;
+  height: 56px;
+  background-color: #f7f7f7;
+
+  font-weight: 400px;
+  font-size: 16px;
+  line-height: 150%;
+  color: #475467;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+.equipment {
+  display: flex;
+  flex-direction: column; /* Change to column for better stacking */
+  gap: 12px;
+}
+.w_filter {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 112px; /* Width of each filter item */
+  height: 96px;
+}
+
+.filter {
+  width: 100%;
+}
+
+.btnFilter {
+  border: 1px solid #dadde1; /* Border color */
+  border-radius: 12px; /* Rounded corners */
+  display: flex; /* Use flex for layout */
+  flex-direction: column; /* Stack icon and text vertically */
+  justify-content: center; /* Center the content */
+  align-items: center; /* Center the content */
+  width: 100%; /* Full width of the filter item */
+  height: 100%; /* Full height of the filter item */
+  padding: 8px; /* Padding inside the button */
+  cursor: pointer; /* Cursor change on hover */
+  transition: background-color 0.2s;
+}
+
+.btnFilter:hover {
+  background-color: #f1f1f1; /* Change background on hover */
+}
+
+.title {
+  font-weight: 500px;
+  font-size: 16px;
+  line-height: 150%;
+  color: #475467;
+}
+.line {
+  height: 1px; /* Set the height of the line */
+  background-color: #dadde1; /* Set color using CSS variable */
+  margin: 8px 0; /* Add some space above and below the line */
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 166px;
+  height: 56px;
+  background-color: #e44848;
+
+  border: none;
+  color: #f7f7f7;
+  font-weight: 500px;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}

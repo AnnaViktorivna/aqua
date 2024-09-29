@@ -58,19 +58,11 @@ const catalogs = createSlice({
   initialState: {
     items: [],
     currentCamper: null,
-    searchResults: [],
-    locationQuery: "",
+
     isLoading: false,
     error: null,
   },
-  reducers: {
-    setSearchQuery(state, action) {
-      state.locationQuery = action.payload;
-    },
-    setSearchResults(state, action) {
-      state.searchResults = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchCatalogs.fulfilled, (state, action) => {
@@ -94,5 +86,4 @@ const catalogs = createSlice({
   },
 });
 
-export const { setSearchQuery, setSearchResults } = catalogs.actions;
 export const catalogsReducer = catalogs.reducer;

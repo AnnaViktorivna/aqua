@@ -1,7 +1,6 @@
 import React from "react";
 import Campers from "../../components/Catalog/Campers/Campers";
-import { Location } from "../../components/Catalog/Location/Location";
-import { Filters } from "../../components/Catalog/Filters/Filters";
+import { Filter } from "../../components/Catalog/Filter/Filter";
 import css from "./CampersPage.module.css";
 import { Outlet, useParams } from "react-router-dom";
 
@@ -16,8 +15,7 @@ export const CampersPage = () => {
           {" "}
           <div className={css.wrap_q}>
             <Outlet />
-            <Location />
-            <Filters />
+            <Filter />
           </div>
           <div className={css.wrap_c}>
             {" "}

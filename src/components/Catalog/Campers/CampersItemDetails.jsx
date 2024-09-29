@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet, useParams } from "react-router-dom";
-import { selectItems } from "../../redux/catalogs/selectors";
 import { fetchCampersItemById } from "../../redux/catalogs/operations";
 import css from "./CampersItemDetails.module.css";
 
