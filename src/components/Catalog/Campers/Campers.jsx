@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCatalogs } from "../../redux/catalogs/operations";
 import css from "./Campers.module.css";
@@ -18,9 +18,18 @@ const Campers = () => {
   const loader = useSelector((state) => state.catalogs.isLoading);
   const filtersCampers = useSelector(selectVisibleCampers);
 
+  const [listFavourites, setlistFavourites] = useState([]);
+
   useEffect(() => {
     dispatch(fetchCatalogs());
-  }, [dispatch]);
+    console.log("Оновлений список улюблених:", listFavourites);
+  }, [dispatch, listFavourites]);
+
+  // Функція додавання до списку улюблених
+  const addToFavouriteList = (item) => {
+    console.log("Доданий елемент до списку улюблених:", item);
+    setlistFavourites((prevList) => [...prevList, item]);
+  };
 
   return loader ? (
     <Loader />
@@ -39,9 +48,12 @@ const Campers = () => {
                 <div className={css.w_info_name_price}>
                   <h3 className={css.info_text}>{item.name}</h3>
                   <h3 className={css.info_text}>
-                    {`\u20AC${item.price}`}
-                    <CiHeart />
+                    {`\u20AC${item.price.toFixed(2).replace(".", ",")}`}
                   </h3>
+                  <CiHeart
+                    onClick={() => addToFavouriteList(item)}
+                    className={css.i_heart}
+                  />
                 </div>
 
                 <div className={css.w_info_star_location}>
