@@ -9,18 +9,22 @@ import { IoMdStar } from "react-icons/io";
 import { GrMapLocation } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 import { selectVisibleCampers } from "../../redux/filter/filterSlice";
+import { Loader } from "../../reusable/Loader/Loader";
 
 const Campers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const loader = useSelector((state) => state.catalogs.isLoading);
   const filtersCampers = useSelector(selectVisibleCampers);
 
   useEffect(() => {
     dispatch(fetchCatalogs());
   }, [dispatch]);
 
-  return (
+  return loader ? (
+    <Loader />
+  ) : (
     <div className={css.list_wrapper_container}>
       <ul className={css.list}>
         {filtersCampers.map((item) => (
