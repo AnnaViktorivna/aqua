@@ -73,6 +73,11 @@ h3 {
 }
 
 .i_heart {
+  fill: #101828;
+}
+
+.show {
+  fill: #e44848;
 }
 
 .star {

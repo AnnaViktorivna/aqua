@@ -19,17 +19,21 @@ const Campers = () => {
   const filtersCampers = useSelector(selectVisibleCampers);
 
   const [listFavourites, setlistFavourites] = useState([]);
+  const [like, setLike] = useState(false);
 
   useEffect(() => {
     dispatch(fetchCatalogs());
-    console.log("Оновлений список улюблених:", listFavourites);
-  }, [dispatch, listFavourites]);
+  }, [dispatch]);
 
   // Функція додавання до списку улюблених
   const addToFavouriteList = (item) => {
     console.log("Доданий елемент до списку улюблених:", item);
     setlistFavourites((prevList) => [...prevList, item]);
   };
+
+  useEffect(() => {
+    console.log("Оновлений список улюблених:", listFavourites);
+  }, [listFavourites]);
 
   return loader ? (
     <Loader />
@@ -51,8 +55,18 @@ const Campers = () => {
                     {`\u20AC${item.price.toFixed(2).replace(".", ",")}`}
                   </h3>
                   <CiHeart
-                    onClick={() => addToFavouriteList(item)}
-                    className={css.i_heart}
+                    onClick={() => {
+                      if (!listFavourites.find((fav) => fav.id === item.id)) {
+                        addToFavouriteList(item);
+                        setLike(!like);
+                      } else {
+                      }
+                    }}
+                    className={`${css.i_heart} ${
+                      listFavourites.find((fav) => fav.id === item.id)
+                        ? css.show
+                        : ""
+                    }`}
                   />
                 </div>
 
