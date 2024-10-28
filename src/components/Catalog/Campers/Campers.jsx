@@ -52,7 +52,7 @@ const Campers = () => {
                 <div className={css.w_info_name_price}>
                   <h3 className={css.info_text}>{item.name}</h3>
                   <h3 className={css.info_text}>
-                    {`\u20AC${item.price.toFixed(2).replace(".", ",")}`}
+                    {`\u20AC${item.price.toFixed(2).replace(",", ".")}`}
                   </h3>
                   <CiHeart
                     onClick={() => {

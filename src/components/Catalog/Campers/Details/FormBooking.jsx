@@ -1,80 +1,84 @@
-import React from "react";
+// import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import css from "./FormBooking.module.css";
+import React from "react";
 
-const FormBooking = () => {
-  <div>
-    <h1>FormBooking</h1>
-    <Formik
-      initialValues={{
-        name: "",
-        email: "",
-        bookingDate: "",
-        comment: "",
-      }}
-      validate={(values) => {
-        const errors = {};
+export const FormBooking = () => {
+  return (
+    <div className={css.f_wrap}>
+      <h2 className={css.f_title}>Book your campervan now</h2>
+      <p className={css.f_text}>
+        Stay connected! We are always ready to help you.
+      </p>
 
-        // Validate name
-        if (!values.name) {
-          errors.name = "Required";
-        }
+      <div>
+        <Formik
+          initialValues={{ name: "", email: "", password: "" }}
+          validate={(values) => {
+            const errors = {};
+            if (!values.email) {
+              errors.email = "Required";
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            ) {
+              errors.email = "Invalid email address";
+            }
+            return errors;
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }, 400);
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form className={css.f_form}>
+              <Field
+                type='name'
+                name='name'
+                placeholder='Name*'
+                className={css.f_input}
+              />
+              <ErrorMessage name='name' component='div' />
 
-        // Validate email
-        if (!values.email) {
-          errors.email = "Required";
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-          errors.email = "Invalid email address";
-        }
+              <Field
+                type='email'
+                name='email'
+                className={css.f_input}
+                placeholder='Email*'
+              />
+              <ErrorMessage name='email' component='div' />
 
-        // Validate booking date
-        if (!values.bookingDate) {
-          errors.bookingDate = "Required";
-        }
+              <Field
+                type='date'
+                name='date'
+                className={css.f_input}
+                placeholder='Booking Date*'
+              />
+              <ErrorMessage name='date' component='div' />
 
-        return errors;
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-          <div>
-            <label htmlFor='name'>Name</label>
-            <Field type='text' name='name' />
-            <ErrorMessage name='name' component='div' />
-          </div>
+              <Field
+                as='textarea'
+                name='comment'
+                // rows='10'
+                // cols='30'
+                placeholder='Comment'
+                className={css.f_textarea}
+              />
+              <ErrorMessage name='comment' component='div' />
 
-          <div>
-            <label htmlFor='email'>Email</label>
-            <Field type='email' name='email' />
-            <ErrorMessage name='email' component='div' />
-          </div>
-
-          <div>
-            <label htmlFor='bookingDate'>Booking Date</label>
-            <Field type='date' name='bookingDate' />
-            <ErrorMessage name='bookingDate' component='div' />
-          </div>
-
-          <div>
-            <label htmlFor='comment'>Comment</label>
-            <Field as='textarea' name='comment' />
-            <ErrorMessage name='comment' component='div' />
-          </div>
-
-          <button type='submit' disabled={isSubmitting}>
-            Submit
-          </button>
-        </Form>
-      )}
-    </Formik>
-  </div>;
+              <button
+                type='submit'
+                disabled={isSubmitting}
+                className={css.f_btn}
+              >
+                Submit
+              </button>
+            </Form>
+          )}
+        </Formik>
+      </div>
+    </div>
+  );
 };
-
-export default FormBooking;

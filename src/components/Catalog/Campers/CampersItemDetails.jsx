@@ -7,7 +7,7 @@ import css from "./CampersItemDetails.module.css";
 import { GrMapLocation } from "react-icons/gr";
 
 import { IoMdStar } from "react-icons/io";
-import FormBooking from "./Details/FormBooking";
+// import FormBooking from "./Details/FormBooking";
 import { selectIsLoading } from "../../redux/catalogs/selectors";
 import { Loader } from "../../reusable/Loader/Loader";
 
@@ -46,16 +46,13 @@ export const CampersItemDetails = () => {
             {item.location}
           </p>
         </div>
-        <h3 className={css.info_text}>
-          {`\u20AC${item.price.toFixed(2)}`}
-          console.log(item.price);
-        </h3>
+        <h3 className={css.info_text}>{`\u20AC${item.price.toFixed(2)}`}</h3>
 
         <div className={css.wrap_img}>
           {item.gallery.map((img, index) => (
             <img
               key={index}
-              className={css.img}
+              className={css._img}
               src={img.thumb}
               alt={`Thumbnail ${index}`}
             />

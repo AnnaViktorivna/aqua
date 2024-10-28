@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import css from "./Features.module.css";
 import { useParams } from "react-router-dom";
 import { selectCurrentCamper } from "../../../redux/catalogs/selectors";
@@ -6,13 +6,14 @@ import { useSelector } from "react-redux";
 
 import { ImTv } from "react-icons/im";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
+// import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import { FaWind } from "react-icons/fa";
 import { BsCupHot } from "react-icons/bs";
 import { BsDiagram3 } from "react-icons/bs";
 import { BsFuelPump } from "react-icons/bs";
 import { BsUiRadios } from "react-icons/bs";
+import { FormBooking } from "./FormBooking";
 
 export const Features = () => {
   const item = useSelector(selectCurrentCamper);
@@ -91,7 +92,8 @@ export const Features = () => {
       </div>
 
       <div className={css.wrap_info_1}>
-        <h2>Form</h2>
+        <FormBooking />
+        {/* <h2>Form</h2>
         <>
           <div>
             <Formik
@@ -163,10 +165,10 @@ export const Features = () => {
                   </button>
                 </Form>
               )}
-            </Formik>
-          </div>
-          ;
-        </>
+            </Formik> */}
+        {/* </div> */}
+        {/* ; */}
+        {/* </> */}
       </div>
     </div>
   );

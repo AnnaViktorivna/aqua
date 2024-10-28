@@ -1,10 +1,17 @@
 .wrap_details {
+  width: 1312px;
   display: flex;
+  justify-content: space-between;
 }
 
 .wrap_info_1 {
-  flex: 1;
-  gap: 8px;
+  /* flex: 1;
+  gap: 8px; */
+
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  width: 641px;
+  height: 588px;
 }
 
 .filter_content {
